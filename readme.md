@@ -11,7 +11,7 @@ TF*IDF = Text Frequency * Inverse Document Frequency
 
 TFIDF is a way of representing a document, based upon its keywords holding values that represent their importance within the document. For a complete description of TFIDF, see http://en.wikipedia.org/wiki/Tf%E2%80%93idf
 
-This example project includes the class TFIDF.cs for performing TF*IDF transformations on a set of documents in C# .NET. Upon providing the class with a list of documents as strings, the class builds a vocabulary (skipping over stop words), and calculates the inverse document frequency (IDF) for each vocabulary term, against the total number of documents. The class then takes each word in the vocabulary and calculates the term frequency against each document. Finally, each term frequency is multiplied by the term's inverse document frequency to provide the TF*IDF score.
+This example project includes the class TFIDF.cs for performing TF*IDF transformations on a set of documents in C# .NET. Upon providing the class with a list of documents as strings, the class builds a vocabulary (skipping over stop words and stemming terms), and calculates the inverse document frequency (IDF) for each vocabulary term, against the total number of documents. The class then takes each word in the vocabulary and calculates the term frequency against each document. Finally, each term frequency is multiplied by the term's inverse document frequency to provide the TF*IDF score.
 
 The class includes an optional method for normalizing the resulting vectors, using L2-norm: Xi = Xi / Sqrt(X0^2 + X1^2 + .. + Xn^2)
 
