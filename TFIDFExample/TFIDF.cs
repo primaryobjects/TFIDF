@@ -1,7 +1,9 @@
 ﻿using EnglishStemmer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -145,6 +147,36 @@ namespace TFIDFExample
         }
 
         /// <summary>
+        /// Saves the TFIDF vocabulary to disk.
+        /// </summary>
+        /// <param name="filePath">File path</param>
+        public static void Save(string filePath = "vocabulary.dat")
+        {
+            // Save result to disk.
+            using (FileStream fs = new FileStream(filePath, FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fs, _vocabularyIDF);
+            }
+        }
+
+        /// <summary>
+        /// Loads the TFIDF vocabulary from disk.
+        /// </summary>
+        /// <param name="filePath">File path</param>
+        public static void Load(string filePath = "vocabulary.dat")
+        {
+            // Load from disk.
+            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                _vocabularyIDF = (Dictionary<string, double>)formatter.Deserialize(fs);
+            }
+        }
+
+        #region Private Helpers
+
+        /// <summary>
         /// Parses and tokenizes a list of documents, returning a vocabulary of words.
         /// </summary>
         /// <param name="docs">string[]</param>
@@ -247,5 +279,7 @@ namespace TFIDFExample
             // Tokenize and also get rid of any punctuation
             return text.Split(" @$/#.-:&*+=[]?!(){},''\">_<;%\\".ToCharArray());
         }
+
+        #endregion
     }
 }
