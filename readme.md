@@ -1,6 +1,9 @@
 TF*IDF in C# .NET
 =========
 
+Tutorial
+http://www.primaryobjects.com/CMS/Article157.aspx
+
 ## Motivation
 
 During a recent machine learning competition, I struggled to find an example of working code in C# .NET that performed a TF*IDF transformation on a set of documents. For such a relatively simple mathematical formula, I had hoped there would be a library available for easy importing into a project. After a bit of searching, I decided to create my own TF*IDF transformation class, modeled after the Python scikit-learn library's method, TfidfVectorizer(). This class is based upon the formula described on Wikipedia and through the sources listed below.
