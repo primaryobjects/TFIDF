@@ -53,7 +53,12 @@ namespace TFIDFExample
         {
             List<List<string>> stemmedDocs;
             List<string> vocabulary;
-
+             
+            
+            while (vocabularyThreshold > documents.Length)
+            {
+                vocabularyThreshold--;
+            }
             // Get the vocabulary and stem the documents at the same time.
             vocabulary = GetVocabulary(documents, out stemmedDocs, vocabularyThreshold);
 
